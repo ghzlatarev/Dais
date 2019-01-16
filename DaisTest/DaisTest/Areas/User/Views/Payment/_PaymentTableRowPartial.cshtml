@@ -1,0 +1,27 @@
+﻿@using DaisTest.Areas.User.ViewModels
+@model PaymentTableViewModel
+
+<td>@Model.AccountPayable</td>
+<td>@Model.AccountReceivable</td>
+<td>@Model.Ammount</td>
+<td>@Model.Description</td>
+<td>@(Model.Status)</td>
+<td>@Model.CreatedOn</td>
+@if (Model.Status == "Pending")
+{
+	<td>
+		<div class=" dark-theme">
+			<a class="page-link"
+			   asp-area="User" asp-controller="Payment" asp-action="Send" asp-route-accountnumber="@Model.AccountPayable" asp-route-paymentvalue="@Model.Ammount" asp-route-id="@Model.Id">Send payment</a>
+		</div>
+	</td>
+
+	<td>
+		<div class=" dark-theme">
+			<a class="page-link"
+			   asp-area="User" asp-controller="Payment" asp-action="Cancel" asp-route-id="@Model.Id">Cancel payment</a>
+		</div>
+	</td>
+}
+
+

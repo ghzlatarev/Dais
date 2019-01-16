@@ -1,0 +1,21 @@
+﻿@using DaisTest.Models
+@model AccountIndexViewModel
+@{
+	ViewData["Title"] = "Index";
+}
+<h2>Home</h2>
+
+@if (User.Identity.IsAuthenticated)
+{
+	<div class="card card-plain">
+		<div class="card-body">
+			<div class="table-responsive">
+				@await Html.PartialAsync("_AccountTablePartial", Model.Table)
+			</div>
+		</div>
+	</div>
+}
+else
+{
+	<h2>Please login to view your accounts!</h2>
+}

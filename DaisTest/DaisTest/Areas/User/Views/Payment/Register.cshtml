@@ -1,0 +1,49 @@
+﻿@using DaisTest.Areas.User.ViewModels
+@model RegisterViewModel
+@{
+	ViewData["Title"] = "Register a new payment";
+}
+
+<h2>@ViewData["Title"]</h2>
+
+<div class="row">
+	<form asp-route-returnUrl="@ViewData["ReturnUrl"]" method="post">
+		<div class="row">
+			<div class="col-md-4">
+				<div class="form-group">
+					<div>
+						<h5>Choose your account</h5>
+						@foreach (var account in Model.userAccounts)
+						{
+							<label asp-for="AccountPayable">@account.AccountNumber</label>
+							<input type="radio" asp-for="AccountPayable" class="form-control" value=@account.AccountNumber />
+							<span asp-validation-for="AccountPayable" class="text-danger"></span>
+						}
+					</div>
+				</div>
+			</div>
+
+			<div class="col-md-8">
+
+				<div asp-validation-summary="All" class="text-danger"></div>
+				<div class="form-group">
+					<label asp-for="AccountReceivable"></label>
+					<input asp-for="AccountReceivable" class="form-control" maxlength="22" minlength="22" required />
+					<span asp-validation-for="AccountReceivable" class="text-danger"></span>
+				</div>
+				<div class="form-group">
+					<label asp-for="Ammount"></label>
+					<input asp-for="Ammount" class="form-control" required />
+					<span asp-validation-for="Ammount" class="text-danger"></span>
+				</div>
+				<div class="form-group">
+					<label>Description</label>
+					<textarea asp-for="Description" rows="4" cols="80" class="form-control" maxlength="250" minlength="3"></textarea>
+					<span asp-validation-for="Description" class="text-danger"></span>
+				</div>
+				<button type="submit" class="btn btn-default">Register</button>
+			</div>
+
+		</div>
+	</form>
+</div>

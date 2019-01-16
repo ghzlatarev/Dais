@@ -1,0 +1,14 @@
+﻿@using DaisTest.Areas.User.ViewModels
+@model PaymentIndexViewModel
+@{
+	ViewData["Title"] = "Index";
+}
+<h2>My Payments</h2>
+
+<div class="card card-plain">
+	<div class="card-body">
+		<div class="table-responsive">
+			@await Html.PartialAsync("_PaymentTablePartial", Model.Table)
+		</div>
+	</div>
+</div>

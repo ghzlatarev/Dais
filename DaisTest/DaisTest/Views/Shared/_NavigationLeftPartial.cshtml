@@ -1,0 +1,35 @@
+﻿<div class="sidebar" data-color="blue" data="blue">
+    <div class="sidebar-wrapper">
+        <div class="logo">
+            <a href="javascript:void(0)" class="simple-text logo-mini">
+                Dais Software
+            </a>
+            <a href="javascript:void(0)" class="simple-text logo-normal">
+                Test
+            </a>
+        </div>
+		<ul class="nav">
+			<li>
+				<a asp-area="" asp-controller="Home" asp-action="Index">
+					<i class="tim-icons icon-bank"></i>
+					<p>Home</p>
+				</a>
+			</li>
+			@if (User.Identity.IsAuthenticated)
+			{
+				<li>
+					<a asp-area="user" asp-controller="payment" asp-action="register">
+						<i class="tim-icons icon-badge"></i>
+						<p>Make new payment</p>
+					</a>
+				</li>
+				<li>
+					<a asp-area="user" asp-controller="payment" asp-action="index">
+						<i class="tim-icons icon-badge"></i>
+						<p>View my payments</p>
+					</a>
+				</li>
+			}
+		</ul>
+    </div>
+</div>
